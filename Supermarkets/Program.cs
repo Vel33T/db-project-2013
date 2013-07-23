@@ -19,14 +19,14 @@ namespace Supermarkets
     {
         static void Main(string[] args)
         {
-            Console.SetIn(new StringReader("N\nY\nN"));
+             // Console.SetIn(new StringReader("N\nN\nN\nN\nN\nY\nY\n"));
 
             if (Ask("Run Task 1?"))
             {
                 using (var sqlserver = new SupermarketsEntities(true))
                 {
-                    Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
-                    sqlserver.Database.Initialize(true);
+                   // Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
+                   // sqlserver.Database.Initialize(true);
 
                     if (Ask("Transfer from MySQL?"))
                     {
@@ -72,21 +72,20 @@ namespace Supermarkets
 
                 if (Ask("Run task 4?"))
                 {
-                    var file = @"output\task-4.xml";
 
                     Supermarkets.Task4.MongoDB.InsertIntoMongoDB.GenerateMongoDBProductReport();
 
-                    Console.WriteLine("Task 4 report in " + file);
+                    Console.WriteLine("Data uploaded to MongoDb");
 
                 }
 
                 if (Ask("Run task 5?"))
                 {
-                    var file = @"output\vendor-expenses-report.xml";
+                    var file = @"files\VendorExpenses.xml";
 
                     Supermarkets.Task5.VendorExpencesXML.GenerateVendorExpenses.WriteVendorExpensesReport(sqlserver, file);
 
-                    Console.WriteLine("Task 5 report in " + file);
+                    Console.WriteLine("Task 5: expenses added to MongoDb and SQLServer");
 
                 }
 
@@ -94,6 +93,7 @@ namespace Supermarkets
                 {
                     var db = @"output\taxes.sqlite";
 
+                    File.Delete(db);
                     File.Copy(@"files\\taxes_and_vendor_financials.sqlite", db);
                     var file = @"output\final-report.xlsx";
 

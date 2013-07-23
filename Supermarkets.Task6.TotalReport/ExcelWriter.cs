@@ -30,7 +30,7 @@ namespace Supermarkets.Task6.TotalReport
                 connection.Open();
 
                 OleDbCommand command = new OleDbCommand(@"CREATE TABLE [Sheet1] 
-([Vendor Name] string, [Incomes] decimal, [Expenses] decimal, [Taxes] decimal, [Financial Result] decimal)", connection);
+([Vendor] string, [Incomes] decimal, [Expenses] decimal, [Taxes] decimal, [Financial Result] decimal)", connection);
                 command.ExecuteScalar();
 
                 foreach (var vendor in items)
@@ -40,9 +40,9 @@ namespace Supermarkets.Task6.TotalReport
                 VALUES (@vendorName, @incomes, @expenses, @taxes, @result)", connection);
 
                     insertQuery.Parameters.AddWithValue("@vendorName", vendor.VendorName);
-                    insertQuery.Parameters.AddWithValue("@income", vendor.Income);
-                    insertQuery.Parameters.AddWithValue("@expenses", vendor.Expenses);
-                    insertQuery.Parameters.AddWithValue("@taxes", vendor.Tax);
+                    insertQuery.Parameters.AddWithValue("@income", vendor.Incomes);
+                    insertQuery.Parameters.AddWithValue("@expenses", vendor.Expanses);
+                    insertQuery.Parameters.AddWithValue("@taxes", vendor.Taxes);
                     insertQuery.Parameters.AddWithValue("@result", vendor.FinancialResult);
 
                     insertQuery.ExecuteNonQuery();

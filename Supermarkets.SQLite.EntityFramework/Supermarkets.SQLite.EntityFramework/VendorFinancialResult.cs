@@ -17,13 +17,13 @@ namespace Supermarkets.SQLite.EntityFramework
         public string VendorName { get; set; }
 
         [Required]
-        public decimal Income { get; set; }
+        public decimal Incomes { get; set; }
 
         [Required]
-        public decimal Expenses { get; set; }
+        public decimal Expanses { get; set; }
 
         [Required]
-        public decimal Tax { get; set; }
+        public decimal Taxes { get; set; }
 
         [Required]
         public decimal FinancialResult { get; set; }
