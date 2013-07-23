@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Supermarkets.Data;
 using Supermarkets.Model;
-
+using Supermarkets.Task1.Excel;
 
 namespace Supermarkets
 {
@@ -11,7 +11,7 @@ namespace Supermarkets
     {
         public static void Transfer(SupermarketsEntities sqlserver)
         {
-            var data = Supermarkets.Task1.Excel.ExcelReader.GetReportsData("files\\reports.zip", "files\\temp");
+            var data = ExcelReader.GetReportsData("files\\reports.zip", "files\\temp");
 
             foreach (var superMarketSales in data.GroupBy(o => o[0]))
             {

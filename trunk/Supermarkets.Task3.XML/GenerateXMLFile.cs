@@ -11,9 +11,17 @@ namespace Supermarkets.Task3.XML
     {
         static void Main()
         {
-            var context = new SupermarketsEntities();
+            using (var context = new SupermarketsEntities())
+            {
 
-            string fileName = "../../aggregated-sales-report.xml";
+                GenerateAggregateReport(context, "../../aggregated-sales-report.xml");
+
+            }
+
+        }
+
+        public static void GenerateAggregateReport(SupermarketsEntities sqlserver, string fileName)
+        {
             Encoding encoding = Encoding.GetEncoding("windows-1251");
             using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))
             {
@@ -21,10 +29,8 @@ namespace Supermarkets.Task3.XML
                 writer.IndentChar = '\t';
                 writer.Indentation = 2;
 
-                WriteVendorSales(writer, context);
+                WriteVendorSales(writer, sqlserver);
             }
-
-
         }
 
         private static void WriteVendorSales(XmlTextWriter writer, SupermarketsEntities context)
