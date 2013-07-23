@@ -1,0 +1,6 @@
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.exe.config
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.csprojResolveAssemblyReference.cache
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.exe
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.exe
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
