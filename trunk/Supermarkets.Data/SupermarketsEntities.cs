@@ -20,6 +20,25 @@ namespace Supermarkets.Data
             this.Transfer = transfer;
         }
 
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine(error.Entry);
+                    foreach (var verror in error.ValidationErrors)
+                        Console.WriteLine(verror);
+                }
+
+                throw;
+            }
+
+        }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
