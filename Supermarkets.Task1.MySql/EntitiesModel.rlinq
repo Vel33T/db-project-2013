@@ -120,7 +120,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>Sm_infoConnection</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=192.168.192.68;User Id=bar;password=123;Persist Security Info=True;database=sm_info</AppConfigConnectionString>
+    <AppConfigConnectionString>server=192.168.192.68;User Id=dev;password=1234;Persist Security Info=True;database=sm_info</AppConfigConnectionString>
     <InitialCatalog>sm_info</InitialCatalog>
     <NamingSettings>
       <ClassRules>
