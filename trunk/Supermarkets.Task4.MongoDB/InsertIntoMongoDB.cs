@@ -13,7 +13,7 @@ using MongoDB.Driver.Builders;
 
 namespace Supermarkets.Task4.MongoDB
 {
-    public class Program
+    public class InsertIntoMongoDB
     {
         static void Main()
         {
