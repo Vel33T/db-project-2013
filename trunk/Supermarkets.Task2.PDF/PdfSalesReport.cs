@@ -24,7 +24,7 @@ namespace Supermarkets.Task2.PDF
             //context.Database.CreateIfNotExists();
 
             PdfPTable table = new PdfPTable(5);
-            table.SetWidths(new int[]{ 30, 15, 10, 35, 10});
+            table.SetWidths(new int[]{ 25, 18, 13, 30, 14});
 
             AddTableHeader(table);
 
@@ -51,9 +51,9 @@ namespace Supermarkets.Task2.PDF
                 {
                     table.AddCell(sale.Product);
                     table.AddCell(sale.Quantity.ToString() + " " + sale.Mea);
-                    table.AddCell(sale.UnitPrice.ToString("C2"));
+                    table.AddCell(sale.UnitPrice.ToString("F2"));
                     table.AddCell(sale.Location);
-                    table.AddCell(sale.Sum.ToString("C2"));
+                    table.AddCell(sale.Sum.ToString("F2"));
                 }
 
                 AddDayTotal(table, saleDate.Date, saleDate.Sum);
@@ -121,7 +121,7 @@ namespace Supermarkets.Task2.PDF
 
             table.AddCell(dayFooter);
 
-            table.AddCell(new PdfPCell(new Phrase(sum.ToString("C2"), new Font(Font.FontFamily.UNDEFINED, 12, 1))));
+            table.AddCell(new PdfPCell(new Phrase(sum.ToString("F2"), new Font(Font.FontFamily.UNDEFINED, 12, 1))));
         }
     }
 }
