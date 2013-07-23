@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Supermarkets.SQLite.EntityFramework
 {
-    class SQLiteTaxesEntities : DbContext
+    public class SQLiteTaxesEntities : DbContext
     {
         public SQLiteTaxesEntities() : base("SQLiteTaxesEntities") { }
 
         public DbSet<ProductTax> ProductTaxes { get; set; }
+
+        public DbSet<VendorFinancialResult> VendorFinancialResults { get; set; }
 
     }
 }
