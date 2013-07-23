@@ -4,3 +4,9 @@ D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.exe
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\EntityFramework.dll
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Data.exe
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Model.dll
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Data.pdb
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Model.pdb
+D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\EntityFramework.xml
