@@ -12,4 +12,72 @@
     <expenses month="Jul-2013">120.00</expenses>
     <expenses month="Aug-2013">180.00</expenses>
   </sale>
+  <sale vendor="Matand Ltd.">
+    <expenses month="Jul-2013">30.00</expenses>
+    <expenses month="Aug-2013">40.00</expenses>
+  </sale>
+  <sale vendor="Coca Cola Corp.">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Zemeneia Ltd.">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Purshevitsa Ltd.">
+    <expenses month="Jul-2013">30.00</expenses>
+    <expenses month="Aug-2013">40.00</expenses>
+  </sale>
+  <sale vendor="Karabunar Ltd.">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Craft Foods Bulgaria">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Slavianka">
+    <expenses month="Jul-2013">30.00</expenses>
+    <expenses month="Aug-2013">40.00</expenses>
+  </sale>
+  <sale vendor="Mondeleez International">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Powermark">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Mall of orient">
+    <expenses month="Jul-2013">30.00</expenses>
+    <expenses month="Aug-2013">40.00</expenses>
+  </sale>
+  <sale vendor="Wrigley's">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Prestige">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Pobeda">
+    <expenses month="Jul-2013">30.00</expenses>
+    <expenses month="Aug-2013">40.00</expenses>
+  </sale>
+  <sale vendor="Maggie">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Ferrero">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Deroni">
+    <expenses month="Jul-2013">200.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
+  <sale vendor="Olineza">
+    <expenses month="Jul-2013">120.00</expenses>
+    <expenses month="Aug-2013">180.00</expenses>
+  </sale>
 </sales>
