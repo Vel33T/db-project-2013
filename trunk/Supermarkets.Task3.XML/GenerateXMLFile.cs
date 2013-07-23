@@ -13,11 +13,8 @@ namespace Supermarkets.Task3.XML
         {
             using (var context = new SupermarketsEntities())
             {
-
                 GenerateAggregateReport(context, "../../aggregated-sales-report.xml");
-
             }
-
         }
 
         public static void GenerateAggregateReport(SupermarketsEntities sqlserver, string fileName)
