@@ -104,6 +104,10 @@
       <Project>{3aae2c02-88e9-470d-bb57-151c01073ed9}</Project>
       <Name>Supermarkets.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework.csproj">
+      <Project>{e4615355-343d-477f-952f-d31ea93ee894}</Project>
+      <Name>Supermarkets.SQLite.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Supermarkets.Task1.Excel\Supermarkets.Task1.Excel.csproj">
       <Project>{fdbd5a2a-5297-411e-8903-9770738fc6ca}</Project>
       <Name>Supermarkets.Task1.Excel</Name>
@@ -119,6 +123,22 @@
     <ProjectReference Include="..\Supermarkets.Task3.XML\Supermarkets.Task3.XML.csproj">
       <Project>{62ddb7fb-aff7-468e-8e5b-c7dcbdd8d284}</Project>
       <Name>Supermarkets.Task3.XML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.Task4.MongoDB\Supermarkets.Task4.MongoDB.csproj">
+      <Project>{888cfd13-0dc6-4188-bfae-7c051c12cd1e}</Project>
+      <Name>Supermarkets.Task4.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.Task5.VendorExpencesXML\Supermarkets.Task5.VendorExpencesXML.csproj">
+      <Project>{6a14213f-ed45-4641-a766-f996b9abf880}</Project>
+      <Name>Supermarkets.Task5.VendorExpencesXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.Task6.MongoToSQLite\Supermarkets.Task6.MongoToSQLite.csproj">
+      <Project>{1c439416-bd08-479e-9769-148b5fa42117}</Project>
+      <Name>Supermarkets.Task6.MongoToSQLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.Task6.TotalReport\Supermarkets.Task6.TotalReport.csproj">
+      <Project>{1ff2db69-ebc5-4dca-999c-79efd65914ba}</Project>
+      <Name>Supermarkets.Task6.TotalReport</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

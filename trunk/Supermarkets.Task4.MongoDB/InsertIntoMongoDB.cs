@@ -20,7 +20,7 @@ namespace Supermarkets.Task4.MongoDB
             GenerateMongoDBProductReport();
         }
 
-        private static void GenerateMongoDBProductReport()
+        public static void GenerateMongoDBProductReport()
         {
             var connectionStr = @"mongodb://dev:1234@ds063297.mongolab.com:63287/db-project-product-reports";
             var client = new MongoClient(connectionStr);
