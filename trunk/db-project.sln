@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.Task4.MongoDB"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.Task5.VendorExpencesXML", "Supermarkets.Task5.VendorExpencesXML\Supermarkets.Task5.VendorExpencesXML.csproj", "{6A14213F-ED45-4641-A766-F996B9ABF880}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.Task6.TotalReport", "Supermarkets.Task6.TotalReport\Supermarkets.Task6.TotalReport.csproj", "{1FF2DB69-EBC5-4DCA-999C-79EFD65914BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.SQLite.EntityFramework", "Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework.csproj", "{E4615355-343D-477F-952F-D31EA93EE894}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{6A14213F-ED45-4641-A766-F996B9ABF880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A14213F-ED45-4641-A766-F996B9ABF880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A14213F-ED45-4641-A766-F996B9ABF880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF2DB69-EBC5-4DCA-999C-79EFD65914BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF2DB69-EBC5-4DCA-999C-79EFD65914BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF2DB69-EBC5-4DCA-999C-79EFD65914BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF2DB69-EBC5-4DCA-999C-79EFD65914BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4615355-343D-477F-952F-D31EA93EE894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4615355-343D-477F-952F-D31EA93EE894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4615355-343D-477F-952F-D31EA93EE894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4615355-343D-477F-952F-D31EA93EE894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
