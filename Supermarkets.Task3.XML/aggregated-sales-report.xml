@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sales>
-		<sale vendor="Matand Ltd.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="2940,2700" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
-		</sale>
-		<sale vendor="Nestle Sofia Corp.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="5996,6700" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="3643,0400" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="6586,4600" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="7978,4800" />
-		</sale>
-		<sale vendor="Purshevitsa Ltd.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
-		</sale>
-		<sale vendor="Targovishte Bottling Company LTD.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
-		</sale>
-		<sale vendor="Zagorka Corp.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="265,8000" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="52,2000" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="366,5000" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="421,0000" />
-		</sale>
-		<sale vendor="Zemeneia Ltd.">
-				<summary date="20.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
-				<summary date="21.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
-				<summary date="22.7.2013 г. 00:00:00 ч." total-sum="3095,4000" />
-				<summary date="23.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
-		</sale>
+	<sale vendor="Matand Ltd.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="2940,2700" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="3920,3600" />
+	</sale>
+	<sale vendor="Nestle Sofia Corp.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="5996,6700" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="3643,0400" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="6586,4600" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="7978,4800" />
+	</sale>
+	<sale vendor="Purshevitsa Ltd.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
+	</sale>
+	<sale vendor="Targovishte Bottling Company LTD.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="236,2500" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="315,0000" />
+	</sale>
+	<sale vendor="Zagorka Corp.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="265,8000" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="52,2000" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="366,5000" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="421,0000" />
+	</sale>
+	<sale vendor="Zemeneia Ltd.">
+		<summary date="20.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
+		<summary date="21.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
+		<summary date="22.7.2013 г. 00:00:00 ч." total-sum="3095,4000" />
+		<summary date="23.7.2013 г. 00:00:00 ч." total-sum="4127,2000" />
+	</sale>
 </sales>
