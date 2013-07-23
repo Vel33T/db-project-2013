@@ -33,12 +33,12 @@ namespace Supermarkets.Task3.XML
             }
         }
 
-        private static void WriteVendorSales(XmlTextWriter writer, SupermarketsEntities context)
+        private static void WriteVendorSales(XmlTextWriter writer, SupermarketsEntities sqlserver)
         {
             writer.WriteStartDocument();
             writer.WriteStartElement("sales");
 
-            var query = from sale in context.Sales
+            var query = from sale in sqlserver.Sales
                         group sale
                         by new { VendorName = sale.Product.Vendor.Name, DateSold = sale.DateSold } into g
                         select new

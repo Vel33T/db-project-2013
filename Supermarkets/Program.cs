@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using Supermarkets.Data;
 using Supermarkets.Model;
+using System.IO;
 
 
 namespace Supermarkets
@@ -23,7 +24,7 @@ namespace Supermarkets
                 MySqlTransfer.Transfer(sqlserver);
                 ExcelTransfer.Transfer(sqlserver);
 
-                Directory.Create("output");
+                Directory.CreateDirectory("output");
 
                 Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, "aggregate-report.xml");
             }
