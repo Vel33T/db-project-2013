@@ -1,0 +1,61 @@
+﻿using System;
+using System.Xml;
+using System.Text;
+using System.Linq;
+using Supermarkets.Data;
+using Supermarkets.Model;
+
+namespace Supermarkets.Task3.XML
+{
+    public class GenerateXMLFile
+    {
+        static void Main()
+        {
+            var context = new SupermarketsEntities();
+
+            string fileName = "../../aggregated-sales-report.xml";
+            Encoding encoding = Encoding.GetEncoding("windows-1251");
+            using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.IndentChar = '\t';
+                writer.Indentation = 2;
+
+                WriteVendorSales(writer, context);
+            }
+
+
+        }
+
+        private static void WriteVendorSales(XmlTextWriter writer, SupermarketsEntities context)
+        {
+            writer.WriteStartDocument();
+            writer.WriteStartElement("sales");
+
+            var query = from sale in context.Sales
+                        group sale
+                        by new { VendorName = sale.Product.Vendor.Name, DateSold = sale.DateSold } into g
+                        select new
+                         {
+                             VendorName = g.Key.VendorName,
+                             DateSold = g.Key.DateSold,
+                             TotalSum = g.Sum(y => y.Quantity * y.UnitPrice)
+                         };
+
+            string currVendor = string.Empty;
+
+            foreach (var item in query)
+            {
+                if (item.VendorName != currVendor)
+                {
+                    writer.WriteStartElement("sale");
+                    writer.WriteAttributeString("vendor", item.VendorName);
+                }
+
+                writer.WriteStartElement("summary");
+                writer.WriteAttributeString("date", item.DateSold.ToString());
+                writer.WriteAttributeString("total-sum", item.TotalSum.ToString());
+            }
+        }
+    }
+}
