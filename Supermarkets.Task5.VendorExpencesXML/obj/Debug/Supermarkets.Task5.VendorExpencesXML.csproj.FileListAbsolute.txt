@@ -26,3 +26,6 @@ F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorEx
 F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Bson.xml
 F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Driver.xml
 F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.csprojResolveAssemblyReference.cache
+C:\Users\student\Desktop\db-project-2013\db-project-2013\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.exe.config
+C:\Users\student\Desktop\db-project-2013\db-project-2013\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.exe
+C:\Users\student\Desktop\db-project-2013\db-project-2013\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
