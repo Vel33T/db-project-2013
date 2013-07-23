@@ -76,13 +76,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EntitiesModel.rlinq">
+    <None Include="App.Config" />
+    <OpenAccessDeploy Include="EntitiesModel.rlinq">
       <Generator>MetaModelCodeGenerator</Generator>
       <LastGenOutput>EntitiesModel.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
+    </OpenAccessDeploy>
     <None Include="EntitiesModel.rlinq.diagram">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </None>
@@ -97,4 +95,5 @@
   </Target>
   -->
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
 </Project>

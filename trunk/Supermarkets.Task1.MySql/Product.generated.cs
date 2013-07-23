@@ -18,9 +18,9 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using Supermarkets.Task1;
+using Supermarkets.Task1.MySql;
 
-namespace Supermarkets.Task1	
+namespace Supermarkets.Task1.MySql	
 {
 	public partial class Product
 	{
@@ -50,16 +50,16 @@ namespace Supermarkets.Task1
 			}
 		}
 		
-		private string _productName;
-		public virtual string ProductName
+		private string _name;
+		public virtual string Name
 		{
 			get
 			{
-				return this._productName;
+				return this._name;
 			}
 			set
 			{
-				this._productName = value;
+				this._name = value;
 			}
 		}
 		

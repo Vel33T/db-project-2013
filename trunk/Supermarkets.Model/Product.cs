@@ -11,12 +11,11 @@ namespace Supermarkets.Model
 {
     public class Product
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
         [MinLength(1)]
-        public string ProductName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public int MeasureId { get; set; }

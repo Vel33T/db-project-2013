@@ -18,9 +18,9 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using Supermarkets.Task1;
+using Supermarkets.Task1.MySql;
 
-namespace Supermarkets.Task1	
+namespace Supermarkets.Task1.MySql	
 {
 	public partial class Measure
 	{
