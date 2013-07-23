@@ -40,9 +40,6 @@
     <Reference Include="itextsharp">
       <HintPath>..\packages\iTextSharp.5.4.2\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="PdfFileWriter">
-      <HintPath>.\PdfFileWriter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
