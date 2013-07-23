@@ -8,64 +8,68 @@ using System.IO;
 
 namespace Supermarkets.Task2.PDF
 {
-    class PdfSalesReport
+    public class PdfSalesReport
     {
         static void Main()
         {
-            SupermarketsEntities context = new SupermarketsEntities();
-            using (context)
+            var filename = Path.Combine(@"D:\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf");
+            using (SupermarketsEntities context = new SupermarketsEntities())
             {
-                //context.Database.CreateIfNotExists();
-
-                PdfPTable table = new PdfPTable(5);
-                AddTableHeader(table);
-
-                var aggregatedSales = from sale in context.Sales
-                                      group sale by sale.DateSold into g
-                                      select new { Date = g.Key, Sum = g.Sum(y => y.Quantity * y.UnitPrice) };
-
-                foreach (var saleDate in aggregatedSales)
-                {
-                    AddDayHeader(table, saleDate.Date);
-
-                    var salesByDay = from sale in context.Sales
-                                     where sale.DateSold == saleDate.Date
-                                     select new
-                                     {
-                                         Product = sale.Product.Name,
-                                         Quantity = sale.Quantity,
-                                         Mea = sale.Product.Measure.Name,
-                                         UnitPrice = sale.UnitPrice,
-                                         Location = sale.Supermarket.Name,
-                                         Sum = sale.Quantity * sale.UnitPrice
-                                     };
-
-                    foreach (var sale in salesByDay)
-                    {
-                        table.AddCell(sale.Product);
-                        table.AddCell(sale.Quantity.ToString() + " " + sale.Mea);
-                        table.AddCell(sale.UnitPrice.ToString("C2"));
-                        table.AddCell(sale.Location);
-                        table.AddCell(sale.Sum.ToString("C2"));
-                    }
-
-                    AddDayTotal(table, saleDate.Date, saleDate.Sum);
-                }
-
-                SaveToFile(table);
-
+                GeneratePdfReport(context, filename);
             }
+
         }
 
-        private static void SaveToFile(PdfPTable table)
+        public static void GeneratePdfReport(SupermarketsEntities sqlserver, string outputFile)
+        {
+            //context.Database.CreateIfNotExists();
+
+            PdfPTable table = new PdfPTable(5);
+            AddTableHeader(table);
+
+            var aggregatedSales = from sale in sqlserver.Sales.Include("Product").Include("Product.Measure").Include("Supermarket")
+                                  group sale by sale.DateSold into g
+                                  select new { Date = g.Key, Sum = g.Sum(y => y.Quantity * y.UnitPrice), Sales = g };
+
+            foreach (var saleDate in aggregatedSales)
+            {
+                AddDayHeader(table, saleDate.Date);
+
+                var salesByDay = from sale in saleDate.Sales.ToList()
+                                 select new
+                                 {
+                                     Product = sale.Product.Name,
+                                     Quantity = sale.Quantity,
+                                     Mea = sale.Product.Measure.Name,
+                                     UnitPrice = sale.UnitPrice,
+                                     Location = sale.Supermarket.Name,
+                                     Sum = sale.Quantity * sale.UnitPrice
+                                 };
+
+                foreach (var sale in salesByDay)
+                {
+                    table.AddCell(sale.Product);
+                    table.AddCell(sale.Quantity.ToString() + " " + sale.Mea);
+                    table.AddCell(sale.UnitPrice.ToString("C2"));
+                    table.AddCell(sale.Location);
+                    table.AddCell(sale.Sum.ToString("C2"));
+                }
+
+                AddDayTotal(table, saleDate.Date, saleDate.Sum);
+            }
+
+            SaveToFile(outputFile, table);
+
+        }
+
+        private static void SaveToFile(string filename, PdfPTable table)
         {
             using (MemoryStream ms = new MemoryStream())
             {
                 Document doc = new Document();
                 //PdfWriter.GetInstance(doc, ms);
-                PdfWriter writer = PdfWriter.GetInstance(doc, 
-                    new FileStream(Path.Combine(@"D:\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf"),
-                        FileMode.Create));
+                PdfWriter writer = PdfWriter.GetInstance(doc,
+                    new FileStream(filename, FileMode.Create));
                 //doc.Add(table);
                 doc.Open();
                 doc.Add(table);
