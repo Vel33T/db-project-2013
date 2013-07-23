@@ -95,5 +95,5 @@
   </Target>
   -->
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
+  <Import Project="..\packages\OpenAccess.CodeFirst.2013.2.702.1\tools\enhancer\OpenAccess.targets" />
 </Project>
