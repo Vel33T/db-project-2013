@@ -17,6 +17,8 @@ namespace Supermarkets.Task2.PDF
             {
                 GeneratePdfReport(context, filename);
             }
+
+            System.Diagnostics.Process.Start(filename);
         }
 
         public static void GeneratePdfReport(SupermarketsEntities sqlserver, string outputFile)
