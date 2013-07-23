@@ -13,6 +13,9 @@ namespace Supermarkets.Task2.PDF
         static void Main()
         {
             var filename = Path.Combine(@"..\..\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf");
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
             using (SupermarketsEntities context = new SupermarketsEntities())
             {
                 GeneratePdfReport(context, filename);
