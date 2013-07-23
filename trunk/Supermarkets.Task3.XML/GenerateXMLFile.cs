@@ -51,14 +51,22 @@ namespace Supermarkets.Task3.XML
             {
                 if (item.VendorName != currVendor)
                 {
+                    if (currVendor != String.Empty)
+                    {
+                        writer.WriteEndElement();
+                    }
+
                     writer.WriteStartElement("sale");
                     writer.WriteAttributeString("vendor", item.VendorName);
+                    currVendor = item.VendorName;
                 }
 
                 writer.WriteStartElement("summary");
                 writer.WriteAttributeString("date", item.DateSold.ToString());
                 writer.WriteAttributeString("total-sum", item.TotalSum.ToString());
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
         }
     }
 }
