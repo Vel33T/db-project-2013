@@ -7,6 +7,8 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using Supermarkets.Data;
+using Supermarkets.Model;
 using MongoDB.Driver.Builders;
 
 namespace Supermarkets.Task4.MongoDB
@@ -15,20 +17,48 @@ namespace Supermarkets.Task4.MongoDB
     {
         static void Main()
         {
+            GenerateMongoDBProductReport();
+        }
+
+        private static void GenerateMongoDBProductReport()
+        {
             var connectionStr = @"mongodb://dev:1234@ds063297.mongolab.com:63287/db-project-product-reports";
             var client = new MongoClient(connectionStr);
             var server = client.GetServer();
             var db = server.GetDatabase("db-project-product-reports");
             MongoCollection<BsonDocument> products = db.GetCollection<BsonDocument>("products");
-            BsonDocument product = new BsonDocument 
+
+            using (var sqlserver = new SupermarketsEntities())
             {
-                { "product-id", "3" },
-                { "product-name", "Beer “Beck’s”" },
-                { "vendor-name", "Zagorka Corp." },
-                { "total-quantity-sold", "673" },
-                { "total-incomes", "609.24" }
-            };
-            products.Insert(product);
+                var query = from sale in sqlserver.Sales
+                            group sale
+                            by new { 
+                                ProductId = sale.ProductId,
+                                ProductName = sale.Product.Name,
+                                VendorName = sale.Product.Vendor.Name} into g
+                            select new
+                            {
+                                ProductId = g.Key.ProductId,
+                                ProductName = g.Key.ProductName,
+                                VendorName = g.Key.VendorName,
+                                TotalQuantitySold = g.Sum(x => x.Quantity),
+                                TotalIncomes = g.Sum(y => y.Quantity * y.UnitPrice)
+                            };
+
+                foreach (var item in query)
+                {
+                    BsonDocument product = new BsonDocument 
+                    {
+                        { "product-id", item.ProductId },
+                        { "product-name", item.ProductName },
+                        { "vendor-name", item.VendorName },
+                        { "total-quantity-sold", item.TotalQuantitySold.ToString() },
+                        { "total-incomes", item.TotalIncomes.ToString() }
+                    };
+
+                    products.Insert(product);
+                }
+            }
         }
     }
 }
