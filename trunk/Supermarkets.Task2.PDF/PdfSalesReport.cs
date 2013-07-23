@@ -26,7 +26,7 @@ namespace Supermarkets.Task2.PDF
             //context.Database.CreateIfNotExists();
 
             PdfPTable table = new PdfPTable(5);
-            table.SetWidths(new int[]{ 25, 18, 13, 30, 14});
+            table.SetWidths(new int[]{ 25, 20, 14, 26, 15});
 
             AddTableHeader(table);
 
