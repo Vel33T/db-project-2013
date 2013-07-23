@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.Task6.TotalRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.SQLite.EntityFramework", "Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework\Supermarkets.SQLite.EntityFramework.csproj", "{E4615355-343D-477F-952F-D31EA93EE894}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supermarkets.Task6.MongoToSQLite", "Supermarkets.Task6.MongoToSQLite\Supermarkets.Task6.MongoToSQLite.csproj", "{1C439416-BD08-479E-9769-148B5FA42117}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{E4615355-343D-477F-952F-D31EA93EE894}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4615355-343D-477F-952F-D31EA93EE894}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4615355-343D-477F-952F-D31EA93EE894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C439416-BD08-479E-9769-148B5FA42117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C439416-BD08-479E-9769-148B5FA42117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C439416-BD08-479E-9769-148B5FA42117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C439416-BD08-479E-9769-148B5FA42117}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
