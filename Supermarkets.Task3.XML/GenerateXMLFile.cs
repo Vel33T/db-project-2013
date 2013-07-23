@@ -19,7 +19,7 @@ namespace Supermarkets.Task3.XML
 
         public static void GenerateAggregateReport(SupermarketsEntities sqlserver, string fileName)
         {
-            Encoding encoding = Encoding.GetEncoding("windows-1251");
+            Encoding encoding = Encoding.GetEncoding("utf-8");
             using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))
             {
                 writer.Formatting = Formatting.Indented;

@@ -18,7 +18,7 @@ namespace Supermarkets.Task4.MongoDB
             var connectionStr = @"mongodb://dev:1234@ds063297.mongolab.com:63287/db-project-product-reports";
             var client = new MongoClient(connectionStr);
             var server = client.GetServer();
-            var db = server.GetDatabase("db-project-product-reportst");
+            var db = server.GetDatabase("db-project-product-reports");
             MongoCollection<BsonDocument> products = db.GetCollection<BsonDocument>("products");
             BsonDocument product = new BsonDocument 
             {
