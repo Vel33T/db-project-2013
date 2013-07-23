@@ -6,7 +6,7 @@ using Supermarkets.SQLite.EntityFramework;
 
 namespace Supermarkets.Task6.TotalReport
 {
-    class ExcelWriter
+    public class ExcelWriter
     {
         public static void GenerateExcel(IQueryable<VendorFinancialResult> items, string pathToExcel)
         {

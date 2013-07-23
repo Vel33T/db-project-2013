@@ -53,10 +53,10 @@ namespace Supermarkets
 
                     Directory.CreateDirectory("output");
                     Supermarkets.Task2.PDF.PdfSalesReport.GeneratePdfReport(sqlserver, file);
+
+                    Console.WriteLine("PDF aggregate sales report in " + file);
+
                 }
-
-                Console.WriteLine("PDF aggregate sales report in " + file);
-
 
                 if (Ask("Run Task 3?"))
                 {
@@ -84,7 +84,7 @@ namespace Supermarkets
                 {
                     var file = @"output\vendor-expenses-report.xml";
 
-                    Supermarkets.Task5.VendorExpencesXML.GenerateVendorExpenses.WriteVendorExpensesReport(file);
+                    Supermarkets.Task5.VendorExpencesXML.GenerateVendorExpenses.WriteVendorExpensesReport(sqlserver, file);
 
                     Console.WriteLine("Task 5 report in " + file);
 
@@ -92,10 +92,19 @@ namespace Supermarkets
 
                 if (Ask("Run Task 6?"))
                 {
+                    var db = @"output\taxes.sqlite";
+
+                    File.Copy(@"files\\taxes_and_vendor_financials.sqlite", db);
                     var file = @"output\final-report.xlsx";
 
-                    // Supermarkets.Task6.TotalReport.ExcelWriter.GenerateExcel(sqlserver, file);
+                    using (var sqlite = new Supermarkets.SQLite.EntityFramework.SQLiteTaxesEntities())
+                    {
+                        Supermarkets.Task6.MongoToSQLite.LoadMongoIntoSQLite.Load(sqlite);
 
+                        Supermarkets.Task6.TotalReport.ExcelWriter.GenerateExcel(sqlite.VendorFinancialResults, file);
+                    }
+
+                    Console.WriteLine("Loaded SQLite in " + db);
                     Console.WriteLine("Final report in " + file);
 
                 }
