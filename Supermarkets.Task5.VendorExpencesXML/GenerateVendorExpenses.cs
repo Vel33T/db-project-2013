@@ -10,52 +10,56 @@ using MongoDB.Bson;
 
 namespace Supermarkets.Task5.VendorExpencesXML
 {
-    class GenerateVendorExpenses
+    public class GenerateVendorExpenses
     {
         static void Main()
         {
-            using (XmlReader reader = XmlReader.Create(@"..\..\VendorExpenses.xml"))
+            WriteVendorExpensesReport(@"..\..\VendorExpenses.xml");
+        }
+
+        public static void WriteVendorExpensesReport(string filename)
+        {
+
+            using (XmlReader reader = XmlReader.Create(filename))
+            using (SupermarketsEntities context = new SupermarketsEntities())
             {
-                using (SupermarketsEntities context = new SupermarketsEntities())
+                string currentVendor = string.Empty;
+
+                while (reader.Read())
                 {
-                    string currentVendor = string.Empty;
-
-                    while (reader.Read())
+                    if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "sale"))
                     {
-                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "sale"))
+                        currentVendor = reader.GetAttribute("vendor");
+
+                        if (context.Vendors.Any(v => v.Name == currentVendor))
                         {
-                            currentVendor = reader.GetAttribute("vendor");
-
-                            if (context.Vendors.Any(v => v.Name == currentVendor))
-                            {
-                                Vendor vendor = new Vendor();
-                                vendor.Name = currentVendor;
-                                context.Vendors.Add(vendor);
-                            }
-                        }
-                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "expenses"))
-                        {
-                            Vendor vendor = context.Vendors.Where(v => v.Name == currentVendor).FirstOrDefault();
-
-                            if (vendor != null)
-                            {
-                                DateTime monthDate = DateTime.Parse("01-" + reader.GetAttribute("month"));
-
-                                VendorExpenses expense = new VendorExpenses();
-                                expense.VendorId = vendor.Id;
-                                expense.Month = monthDate.Month;
-                                expense.Year = monthDate.Year;
-                                expense.Expenses = reader.ReadElementContentAsDecimal();
-
-                                context.VendorExpenses.Add(expense);
-
-                                AddToMongoDB(expense);
-                            }
+                            Vendor vendor = new Vendor();
+                            vendor.Name = currentVendor;
+                            context.Vendors.Add(vendor);
                         }
                     }
+                    if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "expenses"))
+                    {
+                        Vendor vendor = context.Vendors.Where(v => v.Name == currentVendor).FirstOrDefault();
 
-                    context.SaveChanges();
+                        if (vendor != null)
+                        {
+                            DateTime monthDate = DateTime.Parse("01-" + reader.GetAttribute("month"));
+
+                            VendorExpenses expense = new VendorExpenses();
+                            expense.VendorId = vendor.Id;
+                            expense.Month = monthDate.Month;
+                            expense.Year = monthDate.Year;
+                            expense.Expenses = reader.ReadElementContentAsDecimal();
+
+                            context.VendorExpenses.Add(expense);
+
+                            AddToMongoDB(expense);
+                        }
+                    }
                 }
+
+                context.SaveChanges();
             }
         }
 
