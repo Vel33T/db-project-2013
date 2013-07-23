@@ -14,8 +14,6 @@ namespace Supermarkets
         {
             using (var mysql = new MySqlSupermarket())
             {
-                sqlserver.Database.CreateIfNotExists();
-                Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
 
                 // SET IDENTITY_INSERT (Transact-SQL) http://msdn.microsoft.com/en-us/library/ms188059.aspx
 
@@ -37,14 +35,10 @@ namespace Supermarkets
                     }
                 }
 
-                try
-                {
-                    sqlserver.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
+
+                sqlserver.SaveChanges();
+
+
 
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Vendors OFF");
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Measures OFF");
