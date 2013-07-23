@@ -11,17 +11,26 @@ using System.Data;
 
 namespace Supermarkets.Task1.Excel
 {
-    class Program
+    public static class ExcelReader
     {
         static void Main(string[] args)
         {
             string zipPath = @"..\..\Sample-Sales-Reports.zip";
             string extractPath = @"..\..\extract";
 
+            ToString(GetReportsData(zipPath, extractPath));
+
+        }
+
+        static public IEnumerable<string[]> GetReportsData(string zipPath, string extractPath)
+        {
+            Directory.Delete(extractPath);
+
             using (ZipFile archive = ZipFile.Read(zipPath))
             {
                 archive.ExtractAll(extractPath, ExtractExistingFileAction.OverwriteSilently);
             }
+
 
             IEnumerable<string> excelFiles = DirSearch(extractPath);
 
@@ -41,10 +50,11 @@ namespace Supermarkets.Task1.Excel
 
                 sales.AddRange(ReadOneExcelFile(connectionString, salesDate));
 
-                // Print all sales
-                ToString(sales);
+
             }
             Directory.Delete(extractPath, true);
+            return sales;
+
         }
 
         /// <summary>
@@ -78,12 +88,12 @@ namespace Supermarkets.Task1.Excel
         }
 
         /// <summary>
-        /// 
+        /// Reads the contents of an excel report file into a list of sales arrays;
         /// </summary>
         /// <param name="connectionString"></param>
         /// <param name="salesDate"></param>
         /// <returns>rows: Supermarket, Data, ProductID, Quantity, Unit Price</returns>
-        public static List<String[]> ReadOneExcelFile(OleDbConnectionStringBuilder connectionString, string salesDate)
+        public static List<string[]> ReadOneExcelFile(OleDbConnectionStringBuilder connectionString, string salesDate)
         {
             List<String[]> data = new List<String[]>();
             using (OleDbConnection connection = new OleDbConnection(connectionString.ToString()))
@@ -102,7 +112,7 @@ namespace Supermarkets.Task1.Excel
                         string quantity = oneRow[1].ToString();
                         string unitPrice = oneRow[2].ToString();
                         int result;  // only to check if the line containd a sale
-                        if ( int.TryParse(productID, out result))
+                        if (int.TryParse(productID, out result))
                         // If not the Last rows
                         {
                             string[] line = { supermarket, salesDate, productID, quantity, unitPrice };
@@ -119,7 +129,7 @@ namespace Supermarkets.Task1.Excel
         ///  Supermarket, Data, ProductID, Quantity, Unit Price
         /// </summary>
         /// <param name="sales"></param>
-        public static void ToString(List<string[]> sales)
+        public static void ToString(IEnumerable<string[]> sales)
         {
             //Console.WriteLine("Supermarket, Data, ProductID, Quantity, Unit Price");
             foreach (var sale in sales)

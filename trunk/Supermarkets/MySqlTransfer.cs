@@ -9,10 +9,9 @@ namespace Supermarkets
 {
     class MySqlTransfer
     {
-        static public void Transfer()
+        static public void Transfer(SupermarketsEntities sqlserver)
         {
             using (var mysql = new MySqlSupermarket())
-            using (var sqlserver = new SupermarketsEntities())
             {
                 sqlserver.Database.CreateIfNotExists();
 

@@ -20,9 +20,14 @@ namespace Supermarkets
             using (var sqlserver = new SupermarketsEntities())
             {
                 sqlserver.Database.CreateIfNotExists();
+
+                MySqlTransfer.Transfer(sqlserver);
+                ExcelTransfer.Transfer(sqlserver);
+
             }
 
-            MySqlTransfer.Transfer();
         }
+
     }
+
 }
