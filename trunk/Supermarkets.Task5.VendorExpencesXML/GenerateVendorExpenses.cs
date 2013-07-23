@@ -14,14 +14,13 @@ namespace Supermarkets.Task5.VendorExpencesXML
     {
         static void Main()
         {
-            WriteVendorExpensesReport(@"..\..\VendorExpenses.xml");
+            using (var context = new SupermarketsEntities())
+                WriteVendorExpensesReport(context, @"..\..\VendorExpenses.xml");
         }
 
-        public static void WriteVendorExpensesReport(string filename)
+        public static void WriteVendorExpensesReport(SupermarketsEntities sqlserver, string filename)
         {
-
             using (XmlReader reader = XmlReader.Create(filename))
-            using (SupermarketsEntities context = new SupermarketsEntities())
             {
                 string currentVendor = string.Empty;
 
@@ -31,16 +30,16 @@ namespace Supermarkets.Task5.VendorExpencesXML
                     {
                         currentVendor = reader.GetAttribute("vendor");
 
-                        if (context.Vendors.Any(v => v.Name == currentVendor))
+                        if (sqlserver.Vendors.Any(v => v.Name == currentVendor))
                         {
                             Vendor vendor = new Vendor();
                             vendor.Name = currentVendor;
-                            context.Vendors.Add(vendor);
+                            sqlserver.Vendors.Add(vendor);
                         }
                     }
                     if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "expenses"))
                     {
-                        Vendor vendor = context.Vendors.Where(v => v.Name == currentVendor).FirstOrDefault();
+                        Vendor vendor = sqlserver.Vendors.Where(v => v.Name == currentVendor).FirstOrDefault();
 
                         if (vendor != null)
                         {
@@ -52,14 +51,14 @@ namespace Supermarkets.Task5.VendorExpencesXML
                             expense.Year = monthDate.Year;
                             expense.Expenses = reader.ReadElementContentAsDecimal();
 
-                            context.VendorExpenses.Add(expense);
+                            sqlserver.VendorExpenses.Add(expense);
 
                             AddToMongoDB(expense);
                         }
                     }
                 }
 
-                context.SaveChanges();
+                sqlserver.SaveChanges();
             }
         }
 

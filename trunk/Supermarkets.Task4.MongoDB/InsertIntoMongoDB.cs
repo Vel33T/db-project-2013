@@ -32,10 +32,12 @@ namespace Supermarkets.Task4.MongoDB
             {
                 var query = from sale in sqlserver.Sales
                             group sale
-                            by new { 
+                            by new
+                            {
                                 ProductId = sale.ProductId,
                                 ProductName = sale.Product.Name,
-                                VendorName = sale.Product.Vendor.Name} into g
+                                VendorName = sale.Product.Vendor.Name
+                            } into g
                             select new
                             {
                                 ProductId = g.Key.ProductId,
