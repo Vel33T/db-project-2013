@@ -8,7 +8,7 @@ using System.Data.SQLite;
 
 namespace Supermarkets.Task6.TotalReport
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
