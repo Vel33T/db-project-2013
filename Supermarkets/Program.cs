@@ -10,23 +10,26 @@ using Supermarkets.Data;
 using Supermarkets.Model;
 using System.IO;
 
-
 namespace Supermarkets
 {
     class Program
     {
         static void Main(string[] args)
         {
-            using (var sqlserver = new SupermarketsEntities())
+            using (var sqlserver = new SupermarketsEntities(true))
             {
                 sqlserver.Database.CreateIfNotExists();
 
                 MySqlTransfer.Transfer(sqlserver);
-                ExcelTransfer.Transfer(sqlserver);
 
-                Directory.CreateDirectory("output");
+                // ExcelTransfer.Transfer(sqlserver);
+            }
 
-                Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, "aggregate-report.xml");
+            using (var sqlserver = new SupermarketsEntities())
+            {
+                // Directory.CreateDirectory("output");
+
+                // Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, "aggregate-report.xml");
             }
 
         }

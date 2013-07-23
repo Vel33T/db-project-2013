@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Data.Entity;
 using Supermarkets.Data;
+using System.Linq;
 using Supermarkets.Model;
-using MySqlSupermarket = Supermarkets.Task1.MySqlSupermarket;
+using MySqlSupermarket = Supermarkets.Task1.MySql.MySqlSupermarket;
 
 namespace Supermarkets
 {
@@ -14,6 +15,13 @@ namespace Supermarkets
             using (var mysql = new MySqlSupermarket())
             {
                 sqlserver.Database.CreateIfNotExists();
+                Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
+
+                // SET IDENTITY_INSERT (Transact-SQL) http://msdn.microsoft.com/en-us/library/ms188059.aspx
+
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Vendors ON");
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Measures ON");
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products ON");
 
                 var mysqlTables = new IEnumerable[] { mysql.Vendors, mysql.Measures, mysql.Products };
                 var sqlserverEntityFactories = new Func<object>[] { () => new Vendor(), () => new Measure(), () => new Product() };
@@ -29,7 +37,19 @@ namespace Supermarkets
                     }
                 }
 
-                sqlserver.SaveChanges();
+                try
+                {
+                    sqlserver.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Vendors OFF");
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Measures OFF");
+                sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products OFF");
+
             }
         }
     }
