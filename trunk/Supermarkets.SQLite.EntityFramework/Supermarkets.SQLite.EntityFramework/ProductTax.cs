@@ -13,7 +13,7 @@ namespace Supermarkets.SQLite.EntityFramework
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         public string ProductName { get; set; }

@@ -10,6 +10,7 @@ using MongoDB.Driver;
 using Supermarkets.Data;
 using Supermarkets.Model;
 using MongoDB.Driver.Builders;
+using System.IO;
 
 namespace Supermarkets.Task4.MongoDB
 {
@@ -59,6 +60,8 @@ namespace Supermarkets.Task4.MongoDB
                     };
 
                     products.Insert(product);
+                    Directory.CreateDirectory("output\\json");
+                    File.WriteAllText("output\\json\\" + item.ProductId + ".json", product.ToJson());
                 }
             }
         }

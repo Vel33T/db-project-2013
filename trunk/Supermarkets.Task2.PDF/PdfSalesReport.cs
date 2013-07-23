@@ -96,6 +96,7 @@ namespace Supermarkets.Task2.PDF
 
         private static void AddDayHeader(PdfPTable table, DateTime date)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             PdfPCell dayHeader = new PdfPCell(new Phrase("Date: " + date.ToString("dd-MMM-yyyy")));
             dayHeader.Colspan = table.NumberOfColumns;
             dayHeader.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -120,6 +121,7 @@ namespace Supermarkets.Task2.PDF
 
         private static void AddDayTotal(PdfPTable table, DateTime date, decimal sum)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             PdfPCell dayFooter = new PdfPCell(new Phrase("Total sum for " + date.ToString("dd-MMM-yyyy") + ":"));
             dayFooter.Colspan = table.NumberOfColumns - 1;
             dayFooter.HorizontalAlignment = 2;

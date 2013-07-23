@@ -27,17 +27,19 @@ namespace Supermarkets.Task6.MongoToSQLite
 
 
             // fixme: toDictionary?
-            var expenses = vendorExpenses.AsQueryable();
+            var expenses = vendorExpenses.AsQueryable().ToList();
 
-            var byVendor = products.AsQueryable().GroupBy(p => p["vendor-name"].ToString());
+            var byVendor = products.AsQueryable().ToList().GroupBy(p => p["vendor-name"].ToString());
+
+            var taxes = sqlite.ProductTaxes.ToList();
 
             foreach (var gr in byVendor)
             {
-                var expenseStr = expenses.Where(e => e["vendor-name"] == gr.Key).First()["expenses"].ToString();
+                var expenseStr = expenses.Where(e => e["vendor-name"].ToString() == gr.Key).First()["expenses"].ToString();
                 var vfr = new VendorFinancialResult
                 {
                     VendorName = gr.Key,
-                    Expenses = decimal.Parse(expenseStr),
+                    Expanses = decimal.Parse(expenseStr),
                 };
 
                 var totalIncome = 0.0m;
@@ -46,23 +48,24 @@ namespace Supermarkets.Task6.MongoToSQLite
                 {
                     var income = decimal.Parse(productData["total-incomes"].ToString());
 
-                    var taxPercentage = sqlite.ProductTaxes
+                    var taxPercentage = taxes
                         .Where(p => p.ProductName == productData["product-name"].ToString())
                         .First().Tax;
 
                     var taxAmount = income * taxPercentage / 100;
 
                     totalIncome += income;
-                    taxPercentage += taxAmount;
+                    tax += taxAmount;
 
                 }
 
-                vfr.Income = totalIncome;
-                vfr.Tax = tax;
-                vfr.FinancialResult = totalIncome - tax - vfr.Expenses;
+                vfr.Incomes = totalIncome;
+                vfr.Taxes = tax;
+                vfr.FinancialResult = totalIncome - tax - vfr.Expanses;
                 sqlite.VendorFinancialResults.Add(vfr);
             }
 
+            sqlite.SaveChanges();
             /*     BsonDocument vendorExpense = new BsonDocument
              {
                  { "vendor-name", expense.Vendor.Name },
