@@ -15,7 +15,7 @@ namespace Supermarkets.Task1.Excel
     {
         static void Main(string[] args)
         {
-            string zipPath = @"..\..\Sample-Sales-Reports.zip";
+            string zipPath = @"..\..\Sales-Reports.zip";
             string extractPath = @"..\..\extract";
 
             ToString(GetReportsData(zipPath, extractPath));
@@ -23,7 +23,10 @@ namespace Supermarkets.Task1.Excel
 
         static public IEnumerable<string[]> GetReportsData(string zipPath, string extractPath)
         {
-            Directory.Delete(extractPath);
+            if (Directory.Exists(extractPath))
+            {
+                Directory.Delete(extractPath, true);
+            }
 
             using (ZipFile archive = ZipFile.Read(zipPath))
             {
