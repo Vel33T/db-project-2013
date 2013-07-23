@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Supermarkets.SQLite.EntityFramework
 {
     [Table("Taxes")]
-    class ProductTax
+    public class ProductTax
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

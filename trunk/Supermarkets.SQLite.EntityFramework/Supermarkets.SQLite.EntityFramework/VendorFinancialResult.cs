@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Supermarkets.SQLite.EntityFramework
 {
     [Table("VendorFinancialResults")]
-    class VendorFinancialResult
+    public class VendorFinancialResult
     {
         [Key]
         [Required]
