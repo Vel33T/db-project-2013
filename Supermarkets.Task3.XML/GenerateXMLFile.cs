@@ -24,7 +24,7 @@ namespace Supermarkets.Task3.XML
             {
                 writer.Formatting = Formatting.Indented;
                 writer.IndentChar = '\t';
-                writer.Indentation = 2;
+                writer.Indentation = 1;
 
                 WriteVendorSales(writer, sqlserver);
             }

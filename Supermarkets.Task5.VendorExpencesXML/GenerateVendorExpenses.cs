@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Supermarkets.Data;
 using Supermarkets.Model;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace Supermarkets.Task5.VendorExpencesXML
 {
@@ -20,7 +22,6 @@ namespace Supermarkets.Task5.VendorExpencesXML
 
                     while (reader.Read())
                     {
-
                         if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "sale"))
                         {
                             currentVendor = reader.GetAttribute("vendor");
@@ -47,6 +48,8 @@ namespace Supermarkets.Task5.VendorExpencesXML
                                 expense.Expenses = reader.ReadElementContentAsDecimal();
 
                                 context.VendorExpenses.Add(expense);
+
+                                AddToMongoDB(expense);
                             }
                         }
                     }
@@ -54,6 +57,24 @@ namespace Supermarkets.Task5.VendorExpencesXML
                     context.SaveChanges();
                 }
             }
+        }
+
+        public static void AddToMongoDB(VendorExpenses expense)
+        {
+            var connectionStr = @"mongodb://dev:1234@ds063297.mongolab.com:63287/db-project-product-reports";
+            var client = new MongoClient(connectionStr);
+            var server = client.GetServer();
+            var db = server.GetDatabase("db-project-product-reports");
+            MongoCollection<BsonDocument> vendorExpenses = db.GetCollection<BsonDocument>("vendor-expenses");
+
+            BsonDocument vendorExpense = new BsonDocument
+                {
+                    { "vendor-name", expense.Vendor.Name },
+                    { "month", expense.Month + "-" + expense.Year },
+                    { "expenses", expense.Expenses.ToString() },
+                };
+
+            vendorExpenses.Insert(vendorExpense);
         }
     }
 }

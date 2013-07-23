@@ -10,3 +10,19 @@ D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Data.pdb
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Model.pdb
 D:\User Files\My Documents\Telerik Academy\CSharpTrack\06 Databases\Teamwork\db-project\Supermarkets.Task5.VendorExpencesXML\bin\Debug\EntityFramework.xml
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.exe.config
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.exe
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.exe
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Task5.VendorExpencesXML.pdb
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\EntityFramework.dll
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Bson.dll
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Driver.dll
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Data.exe
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Model.dll
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Data.pdb
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\Supermarkets.Model.pdb
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\EntityFramework.xml
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Bson.xml
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\bin\Debug\MongoDB.Driver.xml
+F:\TELERIK\03. DataBases\00. Homeworks\TeamWork\Repo\Supermarkets.Task5.VendorExpencesXML\obj\Debug\Supermarkets.Task5.VendorExpencesXML.csprojResolveAssemblyReference.cache
