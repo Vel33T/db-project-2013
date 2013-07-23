@@ -19,7 +19,6 @@ namespace Supermarkets.Task1.Excel
             string extractPath = @"..\..\extract";
 
             ToString(GetReportsData(zipPath, extractPath));
-
         }
 
         static public IEnumerable<string[]> GetReportsData(string zipPath, string extractPath)
@@ -30,7 +29,6 @@ namespace Supermarkets.Task1.Excel
             {
                 archive.ExtractAll(extractPath, ExtractExistingFileAction.OverwriteSilently);
             }
-
 
             IEnumerable<string> excelFiles = DirSearch(extractPath);
 
@@ -49,12 +47,9 @@ namespace Supermarkets.Task1.Excel
                 salesDate = salesDate.Substring(0, salesDate.IndexOf(".xls"));
 
                 sales.AddRange(ReadOneExcelFile(connectionString, salesDate));
-
-
             }
             Directory.Delete(extractPath, true);
             return sales;
-
         }
 
         /// <summary>
