@@ -42,6 +42,7 @@ namespace Supermarkets.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<VendorExpenses> VendorExpenses { get; set; }
         public DbSet<Measure> Measures { get; set; }
         public DbSet<ProductSupermarketSale> Sales { get; set; }
         public DbSet<Supermarket> Supermarkets { get; set; }
