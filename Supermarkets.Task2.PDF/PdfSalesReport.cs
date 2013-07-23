@@ -12,7 +12,7 @@ namespace Supermarkets.Task2.PDF
     {
         static void Main()
         {
-            var filename = Path.Combine(@"D:\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf");
+            var filename = Path.Combine(@"..\..\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf");
             using (SupermarketsEntities context = new SupermarketsEntities())
             {
                 GeneratePdfReport(context, filename);
@@ -25,6 +25,8 @@ namespace Supermarkets.Task2.PDF
             //context.Database.CreateIfNotExists();
 
             PdfPTable table = new PdfPTable(5);
+            table.SetWidths(new int[]{ 30, 15, 10, 35, 10});
+
             AddTableHeader(table);
 
             var aggregatedSales = from sale in sqlserver.Sales.Include("Product").Include("Product.Measure").Include("Supermarket")
@@ -115,7 +117,8 @@ namespace Supermarkets.Task2.PDF
         {
             PdfPCell dayFooter = new PdfPCell(new Phrase("Total sum for " + date.ToString("dd-MMM-yyyy") + ":"));
             dayFooter.Colspan = table.NumberOfColumns - 1;
-            dayFooter.BackgroundColor = BaseColor.LIGHT_GRAY;
+            dayFooter.HorizontalAlignment = 2;
+            //dayFooter.BackgroundColor = BaseColor.LIGHT_GRAY;
 
             table.AddCell(dayFooter);
 
