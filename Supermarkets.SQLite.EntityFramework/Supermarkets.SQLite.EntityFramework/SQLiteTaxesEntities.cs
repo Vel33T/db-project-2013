@@ -9,7 +9,9 @@ namespace Supermarkets.SQLite.EntityFramework
 {
     class SQLiteTaxesEntities : DbContext
     {
-        public DbSet<ProductTax> ProductTaxes;
+        public SQLiteTaxesEntities() : base("SQLiteTaxesEntities") { }
+
+        public DbSet<ProductTax> ProductTaxes { get; set; }
 
     }
 }
