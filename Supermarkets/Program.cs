@@ -19,23 +19,70 @@ namespace Supermarkets
     {
         static void Main(string[] args)
         {
-            using (var sqlserver = new SupermarketsEntities(true))
+            Console.SetIn(new StringReader("N\nY\nN"));
+
+            if (Ask("Run Task 1?"))
             {
-                Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
-                sqlserver.Database.Initialize(true);
+                using (var sqlserver = new SupermarketsEntities(true))
+                {
+                    Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
+                    sqlserver.Database.Initialize(true);
 
-                MySqlTransfer.Transfer(sqlserver);
+                    if (Ask("Transfer from MySQL?"))
+                    {
+                        MySqlTransfer.Transfer(sqlserver);
+                        Console.WriteLine("Transfer complete");
+                    }
 
-                // ExcelTransfer.Transfer(sqlserver);
+                    if (Ask("Transfer from Excel?"))
+                    {
+                        ExcelTransfer.Transfer(sqlserver);
+                        Console.WriteLine("Transfer complete");
+                    }
+
+                }
             }
 
-            using (var sqlserver = new SupermarketsEntities())
+            if (Ask("Run Task 2?"))
             {
-                Directory.CreateDirectory("output");
+                var file = @"output\report-aggregate-sales.pdf";
 
-                Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, @"output\aggregate-report.xml");
+                using (var sqlserver = new SupermarketsEntities())
+                {
+                    Directory.CreateDirectory("output");
+                    Supermarkets.Task2.PDF.PdfSalesReport.GeneratePdfReport(sqlserver, file);
+                }
+
+                Console.WriteLine("PDF aggregate sales report in " + file);
+
             }
 
+            if (Ask("Run Task 3?"))
+            {
+                var file = @"output\report-vendor-sales.xml";
+
+                using (var sqlserver = new SupermarketsEntities())
+                {
+                    Directory.CreateDirectory("output");
+                    Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, file);
+                }
+
+                Console.WriteLine("XML vendor sales report in " + file);
+
+            }
+
+        }
+
+        static bool Ask(string what)
+        {
+            Console.WriteLine(what);
+            Console.WriteLine("(Y for yes, any other string for no)");
+            var response = Console.ReadLine();
+            if (response == null)
+                return false;
+            if (response.ToUpper().Trim() == "Y")
+                return true;
+            return false;
         }
 
 

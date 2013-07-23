@@ -47,9 +47,10 @@ namespace Supermarkets.Task1.Excel
                 // Get the date from the name of the file.
                 string pattern = "-Sales-Report-";
                 string salesDate = file.Substring(file.LastIndexOf(pattern) + pattern.Length);
+                string supermarket = Path.GetFileNameWithoutExtension(file.Substring(0, file.LastIndexOf(pattern)));
                 salesDate = salesDate.Substring(0, salesDate.IndexOf(".xls"));
 
-                sales.AddRange(ReadOneExcelFile(connectionString, salesDate));
+                sales.AddRange(ReadOneExcelFile(connectionString, supermarket, salesDate));
             }
             Directory.Delete(extractPath, true);
             return sales;
@@ -91,17 +92,16 @@ namespace Supermarkets.Task1.Excel
         /// <param name="connectionString"></param>
         /// <param name="salesDate"></param>
         /// <returns>rows: Supermarket, Data, ProductID, Quantity, Unit Price</returns>
-        public static List<string[]> ReadOneExcelFile(OleDbConnectionStringBuilder connectionString, string salesDate)
+        public static List<string[]> ReadOneExcelFile(OleDbConnectionStringBuilder connectionString, string supermarket, string salesDate)
         {
             List<String[]> data = new List<String[]>();
             using (OleDbConnection connection = new OleDbConnection(connectionString.ToString()))
             {
                 connection.Open();
-                OleDbCommand command = new OleDbCommand("select * from [Sales$]", connection);
+                var command = new OleDbCommand("select * from [Sales$B3:E1000]", connection);
                 using (OleDbDataReader oneRow = command.ExecuteReader())
                 {
-                    oneRow.Read(); // get Supermarket name
-                    string supermarket = oneRow[0].ToString();
+
                     oneRow.Read();  // Skip row - ProductID, Quantity, Unit Price
 
                     while (oneRow.Read())

@@ -112,6 +112,10 @@
       <Project>{78ab1f37-c3be-4447-bf04-76fe57fac727}</Project>
       <Name>Supermarkets.Task1.MySql</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Supermarkets.Task2.PDF\Supermarkets.Task2.PDF.csproj">
+      <Project>{398f8baa-dd8b-4393-a0b7-6b03e1bb234d}</Project>
+      <Name>Supermarkets.Task2.PDF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Supermarkets.Task3.XML\Supermarkets.Task3.XML.csproj">
       <Project>{62ddb7fb-aff7-468e-8e5b-c7dcbdd8d284}</Project>
       <Name>Supermarkets.Task3.XML</Name>
