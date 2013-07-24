@@ -1,42 +1,26 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Supermarkets.Data;
-using Supermarkets.Model;
-using iTextSharp.text.pdf;
 using iTextSharp.text;
-using System.IO;
+using iTextSharp.text.pdf;
 
 namespace Supermarkets.Task2.PDF
 {
     public class PdfSalesReport
     {
-        static void Main()
-        {
-            var filename = Path.Combine(@"..\..\", "SalesReport" + DateTime.Today.ToString("yyyyMMdd") + ".pdf");
-
-            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-
-            using (SupermarketsEntities context = new SupermarketsEntities())
-            {
-                GeneratePdfReport(context, filename);
-            }
-
-            System.Diagnostics.Process.Start(filename);
-        }
-
         public static void GeneratePdfReport(SupermarketsEntities sqlserver, string outputFile)
         {
             //context.Database.CreateIfNotExists();
-
             PdfPTable table = new PdfPTable(5);
             table.WidthPercentage = 100;
-            table.SetWidths(new int[]{ 37, 16, 11, 25, 11});
+            table.SetWidths(new int[] { 37, 16, 11, 25, 11 });
 
             AddTableHeader(table);
 
             var aggregatedSales = from sale in sqlserver.Sales.Include("Product").Include("Product.Measure").Include("Supermarket")
-                                  group sale by sale.DateSold into g
-                                  select new { Date = g.Key, Sum = g.Sum(y => y.Quantity * y.UnitPrice), Sales = g };
+                                  group sale by sale.DateSold
+                                  into g select new { Date = g.Key, Sum = g.Sum(y => y.Quantity * y.UnitPrice), Sales = g };
 
             foreach (var saleDate in aggregatedSales)
             {
@@ -56,7 +40,7 @@ namespace Supermarkets.Task2.PDF
                 foreach (var sale in salesByDay)
                 {
                     table.AddCell(sale.Product);
-                    table.AddCell(sale.Quantity.ToString() + " " + sale.Mea);
+                    table.AddCell(string.Format("{0} {1}", sale.Quantity.ToString(), sale.Mea));
                     table.AddCell(sale.UnitPrice.ToString("F2"));
                     table.AddCell(sale.Location);
                     table.AddCell(sale.Sum.ToString("F2"));
@@ -66,7 +50,20 @@ namespace Supermarkets.Task2.PDF
             }
 
             SaveToFile(outputFile, table);
+        }
 
+        static void Main()
+        {
+            var filename = Path.Combine(@"..\..\", string.Format("SalesReport{0}.pdf", DateTime.Today.ToString("yyyyMMdd")));
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+            using (SupermarketsEntities context = new SupermarketsEntities())
+            {
+                GeneratePdfReport(context, filename);
+            }
+
+            System.Diagnostics.Process.Start(filename);
         }
 
         private static void SaveToFile(string filename, PdfPTable table)
@@ -97,13 +94,14 @@ namespace Supermarkets.Task2.PDF
         private static void AddDayHeader(PdfPTable table, DateTime date)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-            PdfPCell dayHeader = new PdfPCell(new Phrase("Date: " + date.ToString("dd-MMM-yyyy")));
+            PdfPCell dayHeader = new PdfPCell(new Phrase(string.Format("Date: {0}", date.ToString("dd-MMM-yyyy"))));
             dayHeader.Colspan = table.NumberOfColumns;
             dayHeader.BackgroundColor = BaseColor.LIGHT_GRAY;
 
             table.AddCell(dayHeader);
 
-            string[] columnHeaders = new string[] {
+            string[] columnHeaders = new string[]
+            {
                 "Product",
                 "Quantity",
                 "UnitPrice",
@@ -122,7 +120,7 @@ namespace Supermarkets.Task2.PDF
         private static void AddDayTotal(PdfPTable table, DateTime date, decimal sum)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-            PdfPCell dayFooter = new PdfPCell(new Phrase("Total sum for " + date.ToString("dd-MMM-yyyy") + ":"));
+            PdfPCell dayFooter = new PdfPCell(new Phrase(string.Format("Total sum for {0}:", date.ToString("dd-MMM-yyyy"))));
             dayFooter.Colspan = table.NumberOfColumns - 1;
             dayFooter.HorizontalAlignment = 2;
             //dayFooter.BackgroundColor = BaseColor.LIGHT_GRAY;

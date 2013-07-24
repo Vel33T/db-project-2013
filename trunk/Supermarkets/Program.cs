@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Metadata.Edm;
-using System.Linq;
-using System.Text;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using Supermarkets.Data;
-using Supermarkets.Model;
 using System.IO;
+using System.Linq;
+using Supermarkets.Data;
 
 namespace Supermarkets
 {
@@ -19,15 +9,13 @@ namespace Supermarkets
     {
         static void Main(string[] args)
         {
-             // Console.SetIn(new StringReader("N\nN\nN\nN\nN\nY\nY\n"));
-
+            // Console.SetIn(new StringReader("N\nN\nN\nN\nN\nY\nY\n"));
             if (Ask("Run Task 1?"))
             {
                 using (var sqlserver = new SupermarketsEntities(true))
                 {
-                   // Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
-                   // sqlserver.Database.Initialize(true);
-
+                    // Database.SetInitializer<SupermarketsEntities>(new DropCreateDatabaseAlways<SupermarketsEntities>());
+                    // sqlserver.Database.Initialize(true);
                     if (Ask("Transfer from MySQL?"))
                     {
                         MySqlTransfer.Transfer(sqlserver);
@@ -39,10 +27,8 @@ namespace Supermarkets
                         ExcelTransfer.Transfer(sqlserver);
                         Console.WriteLine("Transfer complete");
                     }
-
                 }
             }
-
 
             using (var sqlserver = new SupermarketsEntities())
             {
@@ -50,33 +36,27 @@ namespace Supermarkets
                 {
                     var file = @"output\report-aggregate-sales.pdf";
 
-
                     Directory.CreateDirectory("output");
                     Supermarkets.Task2.PDF.PdfSalesReport.GeneratePdfReport(sqlserver, file);
 
-                    Console.WriteLine("PDF aggregate sales report in " + file);
-
+                    Console.WriteLine(string.Format("PDF aggregate sales report in {0}", file));
                 }
 
                 if (Ask("Run Task 3?"))
                 {
                     var file = @"output\report-vendor-sales.xml";
 
-
                     Directory.CreateDirectory("output");
                     Supermarkets.Task3.XML.GenerateXMLFile.GenerateAggregateReport(sqlserver, file);
 
-                    Console.WriteLine("XML vendor sales report in " + file);
-
+                    Console.WriteLine(string.Format("XML vendor sales report in {0}", file));
                 }
 
                 if (Ask("Run task 4?"))
                 {
-
                     Supermarkets.Task4.MongoDB.InsertIntoMongoDB.GenerateMongoDBProductReport();
 
                     Console.WriteLine("Data uploaded to MongoDb");
-
                 }
 
                 if (Ask("Run task 5?"))
@@ -86,7 +66,6 @@ namespace Supermarkets
                     Supermarkets.Task5.VendorExpencesXML.GenerateVendorExpenses.WriteVendorExpensesReport(sqlserver, file);
 
                     Console.WriteLine("Task 5: expenses added to MongoDb and SQLServer");
-
                 }
 
                 if (Ask("Run Task 6?"))
@@ -104,13 +83,10 @@ namespace Supermarkets
                         Supermarkets.Task6.TotalReport.ExcelWriter.GenerateExcel(sqlite.VendorFinancialResults, file);
                     }
 
-                    Console.WriteLine("Loaded SQLite in " + db);
-                    Console.WriteLine("Final report in " + file);
-
+                    Console.WriteLine(string.Format("Loaded SQLite in {0}", db));
+                    Console.WriteLine(string.Format("Final report in {0}", file));
                 }
-
             }
-
         }
 
         static bool Ask(string what)
@@ -119,13 +95,14 @@ namespace Supermarkets
             Console.WriteLine("(Y for yes, any other string for no)");
             var response = Console.ReadLine();
             if (response == null)
+            {
                 return false;
+            }
             if (response.ToUpper().Trim() == "Y")
+            {
                 return true;
+            }
             return false;
         }
-
-
     }
-
 }

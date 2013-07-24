@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
 using Supermarkets.SQLite.EntityFramework;
+
 namespace Supermarkets.Task6.TotalReport
 {
     static class Program

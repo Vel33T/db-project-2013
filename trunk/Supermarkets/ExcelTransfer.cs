@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using Supermarkets.Data;
 using Supermarkets.Model;
 using Supermarkets.Task1.Excel;
@@ -35,7 +34,6 @@ namespace Supermarkets
 
                     sqlserver.Sales.Add(sale);
                 }
-
             }
 
             sqlserver.SaveChanges();

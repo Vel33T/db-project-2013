@@ -1,26 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Supermarkets.Data;
-using Supermarkets.Model;
-using MongoDB.Driver.Builders;
-using System.IO;
 
 namespace Supermarkets.Task4.MongoDB
 {
     public class InsertIntoMongoDB
     {
-        static void Main()
-        {
-            GenerateMongoDBProductReport();
-        }
-
         public static void GenerateMongoDBProductReport()
         {
             var connectionStr = @"mongodb://dev:1234@ds063297.mongolab.com:63287/db-project-product-reports";
@@ -32,14 +20,13 @@ namespace Supermarkets.Task4.MongoDB
             using (var sqlserver = new SupermarketsEntities())
             {
                 var query = from sale in sqlserver.Sales
-                            group sale
-                            by new
+                            group sale by new
                             {
                                 ProductId = sale.ProductId,
                                 ProductName = sale.Product.Name,
                                 VendorName = sale.Product.Vendor.Name
-                            } into g
-                            select new
+                            }
+                            into g select new
                             {
                                 ProductId = g.Key.ProductId,
                                 ProductName = g.Key.ProductName,
@@ -61,9 +48,14 @@ namespace Supermarkets.Task4.MongoDB
 
                     products.Insert(product);
                     Directory.CreateDirectory("output\\json");
-                    File.WriteAllText("output\\json\\" + item.ProductId + ".json", product.ToJson());
+                    File.WriteAllText(string.Format("output\\json\\{0}.json", item.ProductId), product.ToJson());
                 }
             }
+        }
+
+        static void Main()
+        {
+            GenerateMongoDBProductReport();
         }
     }
 }

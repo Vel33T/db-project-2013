@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using MongoDB.Bson;
-using MongoDB;
-using MongoDB.Bson.IO;
-using MongoDB.Bson.Serialization;
 using Supermarkets.SQLite.EntityFramework;
 
 namespace Supermarkets.Task6.MongoToSQLite
@@ -24,7 +18,6 @@ namespace Supermarkets.Task6.MongoToSQLite
 
             MongoCollection<BsonDocument> products = db.GetCollection<BsonDocument>("products");
             MongoCollection<BsonDocument> vendorExpenses = db.GetCollection<BsonDocument>("vendor-expenses");
-
 
             // fixme: toDictionary?
             var expenses = vendorExpenses.AsQueryable().ToList();
@@ -49,14 +42,14 @@ namespace Supermarkets.Task6.MongoToSQLite
                     var income = decimal.Parse(productData["total-incomes"].ToString());
 
                     var taxPercentage = taxes
-                        .Where(p => p.ProductName == productData["product-name"].ToString())
-                        .First().Tax;
+                                             .Where(p => p.ProductName == productData["product-name"].ToString())
+                                             .First()
+                                             .Tax;
 
                     var taxAmount = income * taxPercentage / 100;
 
                     totalIncome += income;
                     tax += taxAmount;
-
                 }
 
                 vfr.Incomes = totalIncome;
@@ -67,21 +60,19 @@ namespace Supermarkets.Task6.MongoToSQLite
 
             sqlite.SaveChanges();
             /*     BsonDocument vendorExpense = new BsonDocument
-             {
-                 { "vendor-name", expense.Vendor.Name },
-                 { "month", expense.Month + "-" + expense.Year },
-                 { "expenses", expense.Expenses.ToString() },
-             };
-         */
+            {
+            { "vendor-name", expense.Vendor.Name },
+            { "month", expense.Month + "-" + expense.Year },
+            { "expenses", expense.Expenses.ToString() },
+            };
+            */
             /*
-             *                         { "product-id", item.ProductId },
-                        { "product-name", item.ProductName },
-                        { "vendor-name", item.VendorName },
-                        { "total-quantity-sold", item.TotalQuantitySold.ToString() },
-                        { "total-incomes", item.TotalIncomes.ToString() }
-             */
-
-
+            *                         { "product-id", item.ProductId },
+            { "product-name", item.ProductName },
+            { "vendor-name", item.VendorName },
+            { "total-quantity-sold", item.TotalQuantitySold.ToString() },
+            { "total-incomes", item.TotalIncomes.ToString() }
+            */
         }
     }
 }

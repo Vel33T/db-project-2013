@@ -7,58 +7,28 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
 using System;
-using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Data.Common;
 using System.Collections.Generic;
-using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
-using Telerik.OpenAccess.Data.Common;
-using Telerik.OpenAccess.Metadata.Fluent;
-using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using Supermarkets.Task1.MySql;
+using System.Linq;
 
 namespace Supermarkets.Task1.MySql	
 {
-	public partial class Measure
-	{
-		private int _iD;
-		public virtual int ID
-		{
-			get
-			{
-				return this._iD;
-			}
-			set
-			{
-				this._iD = value;
-			}
-		}
+    public partial class Measure
+    {
+        public virtual int ID { get; set; }
 		
-		private string _name;
-		public virtual string Name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				this._name = value;
-			}
-		}
+        public virtual string Name { get; set; }
 		
-		private IList<Product> _products = new List<Product>();
-		public virtual IList<Product> Products
-		{
-			get
-			{
-				return this._products;
-			}
-		}
-		
-	}
+        private IList<Product> _products = new List<Product>();
+
+        public virtual IList<Product> Products
+        {
+            get
+            {
+                return this._products;
+            }
+        }
+    }
 }
 #pragma warning restore 1591
