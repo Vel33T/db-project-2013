@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Data.Entity;
-using Supermarkets.Data;
 using System.Linq;
+using Supermarkets.Data;
 using Supermarkets.Model;
 using MySqlSupermarket = Supermarkets.Task1.MySql.MySqlSupermarket;
 
@@ -14,9 +14,7 @@ namespace Supermarkets
         {
             using (var mysql = new MySqlSupermarket())
             {
-
                 // SET IDENTITY_INSERT (Transact-SQL) http://msdn.microsoft.com/en-us/library/ms188059.aspx
-
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Vendors ON");
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Measures ON");
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products ON");
@@ -35,15 +33,11 @@ namespace Supermarkets
                     }
                 }
 
-
                 sqlserver.SaveChanges();
-
-
 
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Vendors OFF");
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Measures OFF");
                 sqlserver.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products OFF");
-
             }
         }
     }

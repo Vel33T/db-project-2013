@@ -3,24 +3,12 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ionic.Zip;
-using Supermarkets.Model;
-using System.Data;
 
 namespace Supermarkets.Task1.Excel
 {
     public static class ExcelReader
     {
-        static void Main(string[] args)
-        {
-            string zipPath = @"..\..\Sales-Reports.zip";
-            string extractPath = @"..\..\extract";
-
-            ToString(GetReportsData(zipPath, extractPath));
-        }
-
         static public IEnumerable<string[]> GetReportsData(string zipPath, string extractPath)
         {
             if (Directory.Exists(extractPath))
@@ -101,7 +89,6 @@ namespace Supermarkets.Task1.Excel
                 var command = new OleDbCommand("select * from [Sales$B3:E1000]", connection);
                 using (OleDbDataReader oneRow = command.ExecuteReader())
                 {
-
                     oneRow.Read();  // Skip row - ProductID, Quantity, Unit Price
 
                     while (oneRow.Read())
@@ -134,6 +121,14 @@ namespace Supermarkets.Task1.Excel
             {
                 Console.WriteLine(string.Join(", ", sale));
             }
+        }
+
+        static void Main(string[] args)
+        {
+            string zipPath = @"..\..\Sales-Reports.zip";
+            string extractPath = @"..\..\extract";
+
+            ToString(GetReportsData(zipPath, extractPath));
         }
     }
 }

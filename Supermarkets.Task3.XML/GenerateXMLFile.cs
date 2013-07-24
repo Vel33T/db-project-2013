@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Xml;
-using System.Text;
 using System.Linq;
+using System.Text;
+using System.Xml;
 using Supermarkets.Data;
-using Supermarkets.Model;
 
 namespace Supermarkets.Task3.XML
 {
     public class GenerateXMLFile
     {
-        static void Main()
-        {
-            using (var context = new SupermarketsEntities())
-            {
-                GenerateAggregateReport(context, "../../aggregated-sales-report.xml");
-            }
-        }
-
         public static void GenerateAggregateReport(SupermarketsEntities sqlserver, string fileName)
         {
             Encoding encoding = Encoding.GetEncoding("utf-8");
@@ -30,20 +21,27 @@ namespace Supermarkets.Task3.XML
             }
         }
 
+        static void Main()
+        {
+            using (var context = new SupermarketsEntities())
+            {
+                GenerateAggregateReport(context, "../../aggregated-sales-report.xml");
+            }
+        }
+
         private static void WriteVendorSales(XmlTextWriter writer, SupermarketsEntities sqlserver)
         {
             writer.WriteStartDocument();
             writer.WriteStartElement("sales");
 
             var query = from sale in sqlserver.Sales
-                        group sale
-                        by new { VendorName = sale.Product.Vendor.Name, DateSold = sale.DateSold } into g
-                        select new
-                         {
-                             VendorName = g.Key.VendorName,
-                             DateSold = g.Key.DateSold,
-                             TotalSum = g.Sum(y => y.Quantity * y.UnitPrice)
-                         };
+                        group sale by new { VendorName = sale.Product.Vendor.Name, DateSold = sale.DateSold }
+                        into g select new
+                        {
+                            VendorName = g.Key.VendorName,
+                            DateSold = g.Key.DateSold,
+                            TotalSum = g.Sum(y => y.Quantity * y.UnitPrice)
+                        };
 
             string currVendor = string.Empty;
 

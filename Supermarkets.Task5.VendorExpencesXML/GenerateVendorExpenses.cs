@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Xml;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using Supermarkets.Data;
 using Supermarkets.Model;
-using MongoDB.Driver;
-using MongoDB.Bson;
 
 namespace Supermarkets.Task5.VendorExpencesXML
 {
     public class GenerateVendorExpenses
     {
-        static void Main()
-        {
-            using (var context = new SupermarketsEntities())
-                WriteVendorExpensesReport(context, @"..\..\VendorExpenses.xml");
-        }
-
         public static void WriteVendorExpensesReport(SupermarketsEntities sqlserver, string filename)
         {
             using (XmlReader reader = XmlReader.Create(filename))
@@ -43,7 +35,7 @@ namespace Supermarkets.Task5.VendorExpencesXML
 
                         if (vendor != null)
                         {
-                            DateTime monthDate = DateTime.Parse("01-" + reader.GetAttribute("month"));
+                            DateTime monthDate = DateTime.Parse(string.Format("01-{0}", reader.GetAttribute("month")));
 
                             VendorExpenses expense = new VendorExpenses();
                             expense.VendorId = vendor.Id;
@@ -71,13 +63,21 @@ namespace Supermarkets.Task5.VendorExpencesXML
             MongoCollection<BsonDocument> vendorExpenses = db.GetCollection<BsonDocument>("vendor-expenses");
 
             BsonDocument vendorExpense = new BsonDocument
-                {
-                    { "vendor-name", expense.Vendor.Name },
-                    { "month", expense.Month + "-" + expense.Year },
-                    { "expenses", expense.Expenses.ToString() },
-                };
+            {
+                { "vendor-name", expense.Vendor.Name },
+                { "month", string.Format("{0}-{1}", expense.Month, expense.Year) },
+                { "expenses", expense.Expenses.ToString() },
+            };
 
             vendorExpenses.Insert(vendorExpense);
+        }
+
+        static void Main()
+        {
+            using (var context = new SupermarketsEntities())
+            {
+                WriteVendorExpensesReport(context, @"..\..\VendorExpenses.xml");
+            }
         }
     }
 }
