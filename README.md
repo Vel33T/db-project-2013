@@ -1,7 +1,6 @@
 # db-project-2013
-Automatically exported from code.google.com/p/db-project-2013
 
-Telerik Academy team project.
+Telerik Academy team project for "Databases" course.
 
 [Download full assignment](https://github.com/VelizarIT/db-project-2013/blob/master/Databases-Teamwork-Practical-Project.docx?raw=true)
 
