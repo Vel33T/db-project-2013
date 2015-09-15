@@ -2,6 +2,7 @@
 Automatically exported from code.google.com/p/db-project-2013
 
 Telerik Academy team project.
+[Assignment](#Databases-Teamwork-Practical-Project.docx)
 
 The assignment was to design, develop and test a C# application for importing Excel sales reports from ZIP file
 and product data from MySQL into SQL Server, generate PDF aggregated reports and XML sales reports, create product 
