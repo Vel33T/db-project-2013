@@ -3,7 +3,7 @@ Automatically exported from code.google.com/p/db-project-2013
 
 Telerik Academy team project.
 
-[Assignment](https://github.com/VelizarIT/db-project-2013/blob/master/Databases-Teamwork-Practical-Project.docx)
+[Download full assignment](https://github.com/VelizarIT/db-project-2013/blob/master/Databases-Teamwork-Practical-Project.docx?raw=true)
 
 The assignment was to design, develop and test a C# application for importing Excel sales reports from ZIP file
 and product data from MySQL into SQL Server, generate PDF aggregated reports and XML sales reports, create product 
